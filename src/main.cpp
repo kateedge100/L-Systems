@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
-//#include <GLFunctions.h>
 #include <sys/time.h>
 #include <time.h>
 #include <unistd.h>

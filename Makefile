@@ -58,12 +58,7 @@ OBJECTS       = obj/main.o \
 		obj/lsystems.o \
 		obj/turtle.o \
 		obj/scene.o
-DIST          = files/Axiom1.txt \
-		files/Angle1.txt \
-		files/Rule1.txt \
-		files/Rule2.txt \
-		files/Alphabet1.txt \
-		Alphabet1.txt \
+DIST          = Alphabet1.txt \
 		Rule2.txt \
 		Rule1.txt \
 		Axiom1.txt \
@@ -305,24 +300,24 @@ compiler_clean:
 ####### Compile
 
 obj/main.o: src/main.cpp include/scene.h \
-		include/branch.h \
+		branch.h \
 		include/lsystems.h \
 		include/turtle.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/main.o src/main.cpp
 
-obj/branch.o: src/branch.cpp include/branch.h \
+obj/branch.o: src/branch.cpp branch.h \
 		include/turtle.h \
 		include/lsystems.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/branch.o src/branch.cpp
 
 obj/lsystems.o: src/lsystems.cpp include/lsystems.h \
 		include/turtle.h \
-		include/branch.h
+		branch.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/lsystems.o src/lsystems.cpp
 
 obj/turtle.o: src/turtle.cpp include/turtle.h \
 		include/lsystems.h \
-		include/branch.h
+		branch.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/turtle.o src/turtle.cpp
 
 obj/scene.o: src/scene.cpp include/scene.h

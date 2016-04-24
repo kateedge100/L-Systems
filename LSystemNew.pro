@@ -31,11 +31,6 @@ HEADERS += \
     $$PWD/include/scene.h
 
 DISTFILES += \
-    $$PWD/files/Axiom1.txt \
-    $$PWD/files/Angle1.txt \
-    $$PWD/files/Rule1.txt \
-    $$PWD/files/Rule2.txt \
-    files/Alphabet1.txt \
     Alphabet1.txt \
     Rule2.txt \
     Rule1.txt \
@@ -48,8 +43,7 @@ DISTFILES += \
     Angle2.txt
 
 INCLUDEPATH+=$$PWD/include
-#INCLUDEPATH+=$$PWD/GLFunctionsLib/include
-#LIBS+= -L $$PWD/GLFunctionsLib/lib -lGLFunctionsLib
+
 
 
 
