@@ -48,8 +48,8 @@ DISTFILES += \
     Angle2.txt
 
 INCLUDEPATH+=$$PWD/include
-INCLUDEPATH+=$$PWD/GLFunctionsLib/include
-LIBS+= -L $$PWD/GLFunctionsLib/lib -lGLFunctionsLib
+#INCLUDEPATH+=$$PWD/GLFunctionsLib/include
+#LIBS+= -L $$PWD/GLFunctionsLib/lib -lGLFunctionsLib
 
 
 

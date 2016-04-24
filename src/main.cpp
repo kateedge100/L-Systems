@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
-#include <GLFunctions.h>
+//#include <GLFunctions.h>
 #include <sys/time.h>
 #include <time.h>
 #include <unistd.h>
@@ -30,11 +30,30 @@
 // grow tree eg draw 1 recursion at a time using timer or depth
 // connect attributes eg length, angle etc to class
 // allow alpabet and alphabet rule to be read from file
+// correct lighting
 // DOXYGEN
 // allow different files to be read from switch statements
 // add leaves
 // add textures (possibly for seasons)
 
+//int iterations = 1;
+
+Uint32 UpdateIteration(Uint32 _interval, void * _param)
+{
+
+   LSystems *lsystems =(LSystems*)_param;
+   if (lsystems != nullptr && lsystems->m_iterations < lsystems->m_maxIterations)
+   {
+       lsystems->m_iterations+=1;
+
+
+
+       //iterations+=1;
+       //lsystems->productions(iterations);
+   }
+
+   return _interval;
+}
 
 
 
@@ -43,7 +62,7 @@ int main()
 
     Scene *scene = NULL;
 
-    Branch branch;
+    //Branch branch;
 
     LSystems lsystems;
 
@@ -83,10 +102,10 @@ int main()
 bool quit = false;
 
 SDL_Event event;
+SDL_TimerID Update = SDL_AddTimer(500,UpdateIteration,&lsystems);
 
-SDL_StartTextInput();
+//SDL_StartTextInput();
 
-int iterations =3;
 
 while(quit!=true)
 {
@@ -104,35 +123,41 @@ while(quit!=true)
             {
             case SDLK_ESCAPE : quit=true; break;
                 // if 1 is pressed draw 1st tree type
-            case SDLK_1 : lsystems.selectTree(1); break;
+            case SDLK_1 : lsystems.selectTree(1);lsystems.m_iterations=0; break;
                 // if 2 is pressed draw 2ns tree type
-            case SDLK_2 : lsystems.selectTree(2); break;
-                // if right pressed increase increments
-            case SDLK_RIGHT : iterations+=1; break;
-                // if left pressed decrease increments
-            case SDLK_LEFT : iterations-=1; break;
+            case SDLK_2 : lsystems.selectTree(2); lsystems.m_iterations=0 ; break;
+                // press up to increase angle
+            case SDLK_UP : turtle.m_angle+=5; break;
+                // press down to decrease angle
+            case SDLK_DOWN : turtle.m_angle -=5; break;
+                // if right pressed increase max increments (max growth)
+            case SDLK_RIGHT : lsystems.m_maxIterations+=1; lsystems.m_iterations=0; break;
+                // if left pressed decrease max increments (min graowth)
+            case SDLK_LEFT : lsystems.m_maxIterations-=1; lsystems.m_iterations=0; break;
 
-
+            default: break;
             }
         }
+    }
 
         scene->drawScene();
 
         //lsystems.createLeaf();
 
         lsystems.setAxiom();
-        lsystems.setAngle();
         lsystems.setRule();
         lsystems.setAlphabet();
         lsystems.setAlphabetRule();
 
+        turtle.setAngle(turtle.m_angle);
+
          // number of iterations
-         lsystems.productions(iterations);
+         lsystems.productions(lsystems.m_iterations);
 
          lsystems.getDrawingRule();
 
          // width and height
-         turtle.Draw(lsystems,0.01,0.15);
+         turtle.Draw(lsystems,0.02,0.3);
 
 
          //branch->createBranch();
@@ -147,7 +172,7 @@ while(quit!=true)
 
 
 
-    }
+
 
 }
 
@@ -157,6 +182,9 @@ delete scene;
 
 //Destroy window
 SDL_DestroyWindow( window );
+
+// Disable our timer
+SDL_RemoveTimer(Update);
 
 //Quit SDL subsystems
 SDL_Quit();

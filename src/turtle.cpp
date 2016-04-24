@@ -1,24 +1,21 @@
 #include "turtle.h"
 #include "branch.h"
 #include "lsystems.h"
-#include <GLFunctions.h>
+//#include <GLFunctions.h>
 #include <iostream>
 #include <fstream>
 
 Turtle::Turtle()
 {
+    m_angle=30;
 
 }
 
-void Turtle::setAngle()
+void Turtle::setAngle(float _angle)
 {
-    std::string angle;
 
-    std::ifstream inputAngle("Angle1.txt");
+    m_angle=_angle;
 
-    std::getline(inputAngle,angle);
-
-    m_angle= std::stod(angle);
 
 
 
@@ -31,7 +28,7 @@ void Turtle::setAngle()
 void Turtle::rotateLeft()
 {
 
-    glRotatef(30,0.0f,0.0f,1.0f);
+    glRotatef(m_angle,0.0f,0.0f,1.0f);
 
 }
 
@@ -39,31 +36,31 @@ void Turtle::rotateLeft()
 void Turtle::rotateRight()
 {
 
-   glRotatef(-30,0.0f,0.0f,1.0f);
+   glRotatef(-m_angle,0.0f,0.0f,1.0f);
 
 }
 
 
 void Turtle::rollLeft()
 {
-    glRotatef(30,0,1,0);
+    glRotatef(m_angle,0,1,0);
 
 }
 
 void Turtle::rollRight()
 {
-    glRotatef(-30,0,1,0);
+    glRotatef(-m_angle,0,1,0);
 }
 
 void Turtle::pitchUp()
 {
-    glRotatef(-30,1.0f,0.0f,0.0f);
+    glRotatef(-m_angle,1.0f,0.0f,0.0f);
 
 }
 
 void Turtle::pitchDown()
 {
-    glRotatef(30,1.0f,0.0f,0.0f);
+    glRotatef(m_angle,1.0f,0.0f,0.0f);
 
 }
 
@@ -72,10 +69,13 @@ void Turtle::push(float m_w)
 {
    glPushMatrix();
 
-    if(m_depth>0.8)
-   {
-     m_depth-=0.1;
-   }
+   // so width cant be less then 0
+  if(m_depth+m_width> 0.005)
+ {
+   m_depth-=0.0002;
+ }
+
+
 
 }
 
@@ -83,10 +83,17 @@ void Turtle::pop(float m_w)
 {
    glPopMatrix();
 
-   if(m_depth< 1.3)
+   // so width cant be less then 0
+  if(m_depth+m_width>0.005)
+ {
+   m_depth+=0.0002;
+ }
+
+   /*if(m_depth< 0.03)
    {
-     m_depth+=0.1;
+     m_depth+=0.005;
   }
+  */
 
 }
 
@@ -97,8 +104,8 @@ void Turtle::pop(float m_w)
 void Turtle::Draw(const LSystems &l, float m_w, float m_length)
 {
 
-
-   m_depth=1;
+   m_width=m_w;
+   m_depth=0;
 
 
     //Sets drawingRule equil to final iteraltion of m_str
@@ -130,7 +137,7 @@ void Turtle::Draw(const LSystems &l, float m_w, float m_length)
 
                 Branch b;
                 // creat branch and set width
-                b.createBranch(m_w*m_depth,m_length);
+                b.createBranch(m_width+m_depth,m_length);
 
 
 

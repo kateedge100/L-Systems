@@ -20,12 +20,16 @@ public:
     void rollRight();
     void push(float m_w);
     void pop(float m_w);
-    void setAngle();
+    void setAngle(float _angle);
     float m_depth;
+    float m_angle;
+
 
 
 private:
-    float m_angle;
+    float m_width;
+
+
 
 
 

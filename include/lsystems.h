@@ -18,12 +18,14 @@ public:
     //set axiom
     void setAxiom();
     void setAlphabet();
-    void setAngle();
     void setRule();
     void setAlphabetRule();
     void selectTree(int option);
     const std::string& getDrawingRule() const {return m_str;}
     void createLeaf();
+    int m_iterations;
+    int m_maxIterations;
+
 
 
 
@@ -39,7 +41,7 @@ private:
     int m_treeOption;
 
     std::string m_angle;
-    int m_iterations;
+
 
 
 

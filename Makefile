@@ -15,7 +15,7 @@ CXX           = clang++
 DEFINES       = 
 CFLAGS        = -pipe -std=c99 -I/usr/include/SDL2 -D_REENTRANT -g -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=c++11 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/bin/sdl2-config -I/usr/share/doc/SDL2_image -Iinclude -IGLFunctionsLib/include -I/usr/lib64/qt5/mkspecs/linux-clang
+INCPATH       = -I. -I/usr/bin/sdl2-config -I/usr/share/doc/SDL2_image -Iinclude -I/usr/lib64/qt5/mkspecs/linux-clang
 QMAKE         = /usr/bin/qmake-qt5
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = LSystemNew1.0.0
 DISTDIR = /home/kedge/Desktop/PPP/Assignment2/LSystemNew/obj/LSystemNew1.0.0
 LINK          = clang++
 LFLAGS        = -ccc-gcc-name g++
-LIBS          = $(SUBLIBS) -lSDL2 -lpthread -lSDL2_image -lGL -lGLU -L /home/kedge/Desktop/PPP/Assignment2/LSystemNew/GLFunctionsLib/lib -lGLFunctionsLib 
+LIBS          = $(SUBLIBS) -lSDL2 -lpthread -lSDL2_image -lGL -lGLU 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -304,9 +304,7 @@ compiler_clean:
 
 ####### Compile
 
-obj/main.o: src/main.cpp GLFunctionsLib/include/GLFunctions.h \
-		GLFunctionsLib/include/Vec4.h \
-		include/scene.h \
+obj/main.o: src/main.cpp include/scene.h \
 		include/branch.h \
 		include/lsystems.h \
 		include/turtle.h
@@ -324,9 +322,7 @@ obj/lsystems.o: src/lsystems.cpp include/lsystems.h \
 
 obj/turtle.o: src/turtle.cpp include/turtle.h \
 		include/lsystems.h \
-		include/branch.h \
-		GLFunctionsLib/include/GLFunctions.h \
-		GLFunctionsLib/include/Vec4.h
+		include/branch.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/turtle.o src/turtle.cpp
 
 obj/scene.o: src/scene.cpp include/scene.h

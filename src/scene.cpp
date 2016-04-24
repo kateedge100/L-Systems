@@ -22,7 +22,7 @@ void Scene::init()
     glEnable(GL_LIGHT0);
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    GLfloat lightpos[] = {0.0f, 1.0f, 1.0f, 1.0f};
+    GLfloat lightpos[] = {1.0f, 1.0f, 1.0f, 1.0f};
     GLfloat lightdiff[] = {0.5f, 0.5f, 0.5f, 1.0f};
     GLfloat lightamb[] = {0.2f, 0.2f, 0.2f, 1.0f};
     GLfloat lightspec[] = {1.0f, 1.0f, 1.0f, 1.0f};

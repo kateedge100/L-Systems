@@ -15,6 +15,8 @@
 LSystems::LSystems()
 {
     m_treeOption=1;
+    m_iterations=0;
+    m_maxIterations=3;
 
 
 }
@@ -50,28 +52,6 @@ LSystems::~LSystems()
 void LSystems::selectTree(int option)
 {
     m_treeOption=option;
-
-
-
-
-    /*SDL_Event e;
-    {
-
-      // check for a key down
-      if (e.type == SDL_KEYDOWN)
-      {
-        switch (e.key.keysym.sym)
-        {
-        // if we have an escape quit
-        case SDLK_1 : m_treeOption = 1; break;
-        case SDLK_2 : m_treeOption = 2; break;
-        }
-
-      }
-
-
-    }
-    */
 
 }
 
@@ -122,13 +102,7 @@ void LSystems::setAlphabet()
 
 }
 
-void LSystems::setAngle()
-{
 
-
-
-
-}
 
 void LSystems::setRule()
 {
