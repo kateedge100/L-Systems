@@ -49,12 +49,10 @@ OBJECTS_DIR   = obj/
 ####### Files
 
 SOURCES       = src/Main.cpp \
-		src/Branch.cpp \
 		src/Lsystems.cpp \
 		src/Turtle.cpp \
 		src/Scene.cpp 
 OBJECTS       = obj/Main.o \
-		obj/Branch.o \
 		obj/Lsystems.o \
 		obj/Turtle.o \
 		obj/Scene.o
@@ -118,11 +116,9 @@ DIST          = Alphabet1.txt \
 		/usr/lib64/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib64/qt5/mkspecs/features/yacc.prf \
 		/usr/lib64/qt5/mkspecs/features/lex.prf \
-		LSystemNew.pro /home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/Branch.h \
-		/home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/Lsystems.h \
+		LSystemNew.pro /home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/Lsystems.h \
 		/home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/Turtle.h \
 		/home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/Scene.h src/Main.cpp \
-		src/Branch.cpp \
 		src/Lsystems.cpp \
 		src/Turtle.cpp \
 		src/Scene.cpp
@@ -299,22 +295,17 @@ compiler_clean:
 
 ####### Compile
 
-obj/Main.o: src/Main.cpp branch.h
+obj/Main.o: src/Main.cpp include/Scene.h \
+		include/Lsystems.h \
+		include/Turtle.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Main.o src/Main.cpp
 
-obj/Branch.o: src/Branch.cpp branch.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Branch.o src/Branch.cpp
-
 obj/Lsystems.o: src/Lsystems.cpp include/Lsystems.h \
-		include/Turtle.h \
-		include/Branch.h \
-		branch.h
+		include/Turtle.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Lsystems.o src/Lsystems.cpp
 
 obj/Turtle.o: src/Turtle.cpp include/Turtle.h \
-		include/Lsystems.h \
-		include/Branch.h \
-		branch.h
+		include/Lsystems.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Turtle.o src/Turtle.cpp
 
 obj/Scene.o: src/Scene.cpp include/Scene.h

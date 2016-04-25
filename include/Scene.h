@@ -13,14 +13,6 @@ public:
     Scene();
     void init();
     void drawScene();
-    void update();
-
-    double m_startTime;
-    double m_elapsedTime;
-
-
-
-
 };
 
 #endif // SCENE_H

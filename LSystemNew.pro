@@ -18,14 +18,12 @@ INCLUDEPATH+=/usr/share/doc/SDL2_image
 FORMS += $$PWD/files/
 
 SOURCES += $$PWD/src/Main.cpp \
-    $$PWD/src/Branch.cpp \
     $$PWD/src/Lsystems.cpp \
     $$PWD/src/Turtle.cpp \
     $$PWD/src/Scene.cpp
 
 
 HEADERS += \
-    $$PWD/include/Branch.h \
     $$PWD/include/Lsystems.h \
     $$PWD/include/Turtle.h \
     $$PWD/include/Scene.h
