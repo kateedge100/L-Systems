@@ -1,6 +1,6 @@
-#include "turtle.h"
-#include "branch.h"
-#include "lsystems.h"
+#include "Turtle.h"
+#include "Branch.h"
+#include "Lsystems.h"
 //#include <GLFunctions.h>
 #include <iostream>
 #include <fstream>
@@ -65,35 +65,29 @@ void Turtle::pitchDown()
 }
 
 
-void Turtle::push(float m_w)
+void Turtle::push()
 {
    glPushMatrix();
 
-   // so width cant be less then 0
-  if(m_depth+m_width> 0.005)
+   // so width cant be less then 0.005
+  if(m_width>= 0.008)
  {
-   m_depth-=0.0002;
+   m_width-=0.005;
  }
 
 
 
 }
 
-void Turtle::pop(float m_w)
+void Turtle::pop()
 {
    glPopMatrix();
 
    // so width cant be less then 0
-  if(m_depth+m_width>0.005)
+  if(m_width<0.04)
  {
-   m_depth+=0.0002;
+   m_width+=0.005;
  }
-
-   /*if(m_depth< 0.03)
-   {
-     m_depth+=0.005;
-  }
-  */
 
 }
 
@@ -105,7 +99,7 @@ void Turtle::Draw(const LSystems &l, float m_w, float m_length)
 {
 
    m_width=m_w;
-   m_depth=0;
+
 
 
     //Sets drawingRule equil to final iteraltion of m_str
@@ -137,7 +131,7 @@ void Turtle::Draw(const LSystems &l, float m_w, float m_length)
 
                 Branch b;
                 // creat branch and set width
-                b.createBranch(m_width+m_depth,m_length);
+                b.createBranch(m_width,m_length);
 
 
 
@@ -200,13 +194,13 @@ void Turtle::Draw(const LSystems &l, float m_w, float m_length)
 
             else if(currentChar.compare("[")==0)
             {
-                push(m_w);
+                push();
                // std::cout<<"push\n";
                 i=i+1;
             }
             else if(currentChar.compare("]")==0)
             {
-                pop(m_w);
+                pop();
                // std::cout<<"pop\n";
                 i=i+1;
             }

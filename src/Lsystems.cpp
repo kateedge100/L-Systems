@@ -1,6 +1,6 @@
-#include "lsystems.h"
-#include "turtle.h"
-#include "branch.h"
+#include "Lsystems.h"
+#include "Turtle.h"
+#include "Branch.h"
 #include <iostream>
 #include <fstream>
 
@@ -25,7 +25,7 @@ LSystems::LSystems()
 
 void LSystems::createLeaf()
 {
-     glMatrixMode(GL_MODELVIEW);
+    glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glTranslatef(0,2,0);
     glBegin(GL_TRIANGLES);

@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <math.h>
-#include "lsystems.h"
-#include "branch.h"
+#include "Lsystems.h"
+#include "Branch.h"
 
 
 class Turtle
@@ -18,16 +18,17 @@ public:
     void pitchDown();
     void rollLeft();
     void rollRight();
-    void push(float m_w);
-    void pop(float m_w);
+    void push();
+    void pop();
     void setAngle(float _angle);
     float m_depth;
     float m_angle;
+    float m_width;
 
 
 
 private:
-    float m_width;
+
 
 
 

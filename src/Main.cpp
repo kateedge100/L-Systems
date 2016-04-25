@@ -16,22 +16,19 @@
 #include <time.h>
 #include <unistd.h>
 
-#include "scene.h"
-#include "branch.h"
-#include "lsystems.h"
-#include "turtle.h"
+#include "Scene.h"
+#include "Branch.h"
+#include "Lsystems.h"
+#include "Turtle.h"
 
 // Includes needed for SDL an GL
 #include <SDL2/SDL.h>
 
 // THINGS TO DO
 // get width and length to decrease based on depth
-// grow tree eg draw 1 recursion at a time using timer or depth
 // connect attributes eg length, angle etc to class
-// allow alpabet and alphabet rule to be read from file
 // correct lighting
 // DOXYGEN
-// allow different files to be read from switch statements
 // add leaves
 // add textures (possibly for seasons)
 
@@ -47,9 +44,14 @@ Uint32 UpdateIteration(Uint32 _interval, void * _param)
 
 
 
-       //iterations+=1;
-       //lsystems->productions(iterations);
+
+
    }
+   /*Turtle *turtle=(Turtle*)_param;
+   if( turtle !=nullptr)
+   {
+       turtle->m_width+=0.003;
+   }*/
 
    return _interval;
 }
@@ -141,7 +143,8 @@ while(quit!=true)
 
         scene->drawScene();
 
-        //lsystems.createLeaf();
+
+        lsystems.createLeaf();
 
         lsystems.setAxiom();
         lsystems.setRule();
@@ -155,8 +158,8 @@ while(quit!=true)
 
          lsystems.getDrawingRule();
 
-         // width and height
-         turtle.Draw(lsystems,0.02,0.3);
+         // width and height. width increases with each iteration
+         turtle.Draw(lsystems,lsystems.m_iterations*0.008,0.3);
 
 
          //branch->createBranch();

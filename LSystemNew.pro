@@ -17,18 +17,18 @@ INCLUDEPATH+=/usr/share/doc/SDL2_image
 
 FORMS += $$PWD/files/
 
-SOURCES += $$PWD/src/main.cpp \
-    $$PWD/src/branch.cpp \
-    $$PWD/src/lsystems.cpp \
-    $$PWD/src/turtle.cpp \
-    $$PWD/src/scene.cpp
+SOURCES += $$PWD/src/Main.cpp \
+    $$PWD/src/Branch.cpp \
+    $$PWD/src/Lsystems.cpp \
+    $$PWD/src/Turtle.cpp \
+    $$PWD/src/Scene.cpp
 
 
 HEADERS += \
-    $$PWD/include/branch.h \
-    $$PWD/include/lsystems.h \
-    $$PWD/include/turtle.h \
-    $$PWD/include/scene.h
+    $$PWD/include/Branch.h \
+    $$PWD/include/Lsystems.h \
+    $$PWD/include/Turtle.h \
+    $$PWD/include/Scene.h
 
 DISTFILES += \
     Alphabet1.txt \

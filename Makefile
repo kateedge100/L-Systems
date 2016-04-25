@@ -48,16 +48,16 @@ OBJECTS_DIR   = obj/
 
 ####### Files
 
-SOURCES       = src/main.cpp \
-		src/branch.cpp \
-		src/lsystems.cpp \
-		src/turtle.cpp \
-		src/scene.cpp 
-OBJECTS       = obj/main.o \
-		obj/branch.o \
-		obj/lsystems.o \
-		obj/turtle.o \
-		obj/scene.o
+SOURCES       = src/Main.cpp \
+		src/Branch.cpp \
+		src/Lsystems.cpp \
+		src/Turtle.cpp \
+		src/Scene.cpp 
+OBJECTS       = obj/Main.o \
+		obj/Branch.o \
+		obj/Lsystems.o \
+		obj/Turtle.o \
+		obj/Scene.o
 DIST          = Alphabet1.txt \
 		Rule2.txt \
 		Rule1.txt \
@@ -118,14 +118,14 @@ DIST          = Alphabet1.txt \
 		/usr/lib64/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib64/qt5/mkspecs/features/yacc.prf \
 		/usr/lib64/qt5/mkspecs/features/lex.prf \
-		LSystemNew.pro /home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/branch.h \
-		/home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/lsystems.h \
-		/home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/turtle.h \
-		/home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/scene.h src/main.cpp \
-		src/branch.cpp \
-		src/lsystems.cpp \
-		src/turtle.cpp \
-		src/scene.cpp
+		LSystemNew.pro /home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/Branch.h \
+		/home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/Lsystems.h \
+		/home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/Turtle.h \
+		/home/kedge/Desktop/PPP/Assignment2/LSystemNew/include/Scene.h src/Main.cpp \
+		src/Branch.cpp \
+		src/Lsystems.cpp \
+		src/Turtle.cpp \
+		src/Scene.cpp
 QMAKE_TARGET  = LSystemNew
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = LSystemNew
@@ -299,29 +299,26 @@ compiler_clean:
 
 ####### Compile
 
-obj/main.o: src/main.cpp include/scene.h \
-		branch.h \
-		include/lsystems.h \
-		include/turtle.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/main.o src/main.cpp
+obj/Main.o: src/Main.cpp branch.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Main.o src/Main.cpp
 
-obj/branch.o: src/branch.cpp branch.h \
-		include/turtle.h \
-		include/lsystems.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/branch.o src/branch.cpp
+obj/Branch.o: src/Branch.cpp branch.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Branch.o src/Branch.cpp
 
-obj/lsystems.o: src/lsystems.cpp include/lsystems.h \
-		include/turtle.h \
+obj/Lsystems.o: src/Lsystems.cpp include/Lsystems.h \
+		include/Turtle.h \
+		include/Branch.h \
 		branch.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/lsystems.o src/lsystems.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Lsystems.o src/Lsystems.cpp
 
-obj/turtle.o: src/turtle.cpp include/turtle.h \
-		include/lsystems.h \
+obj/Turtle.o: src/Turtle.cpp include/Turtle.h \
+		include/Lsystems.h \
+		include/Branch.h \
 		branch.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/turtle.o src/turtle.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Turtle.o src/Turtle.cpp
 
-obj/scene.o: src/scene.cpp include/scene.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/scene.o src/scene.cpp
+obj/Scene.o: src/Scene.cpp include/Scene.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Scene.o src/Scene.cpp
 
 ####### Install
 
