@@ -29,16 +29,14 @@ HEADERS += \
     $$PWD/include/Scene.h
 
 DISTFILES += \
-    Alphabet1.txt \
-    Rule2.txt \
-    Rule1.txt \
-    Axiom1.txt \
-    Angle1.txt \
-    AlphabetRule1.txt \
-    Axiom2.txt \
-    Alphabet2.txt \
-    AlphabetRule2.txt \
-    Angle2.txt
+    $$PWD/docs/Alphabet1.txt \
+    $$PWD/docs/Rule2.txt \
+    $$PWD/docs/Rule1.txt \
+    $$PWD/docs/Axiom1.txt \
+    $$PWD/docs/AlphabetRule1.txt \
+    $$PWD/docs/Axiom2.txt \
+    $$PWD/docs/Alphabet2.txt \
+    $$PWD/docs/AlphabetRule2.txt \
 
 INCLUDEPATH+=$$PWD/include
 

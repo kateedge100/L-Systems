@@ -56,16 +56,14 @@ OBJECTS       = obj/Main.o \
 		obj/Lsystems.o \
 		obj/Turtle.o \
 		obj/Scene.o
-DIST          = Alphabet1.txt \
-		Rule2.txt \
-		Rule1.txt \
-		Axiom1.txt \
-		Angle1.txt \
-		AlphabetRule1.txt \
-		Axiom2.txt \
-		Alphabet2.txt \
-		AlphabetRule2.txt \
-		Angle2.txt \
+DIST          = docs/Alphabet1.txt \
+		docs/Rule2.txt \
+		docs/Rule1.txt \
+		docs/Axiom1.txt \
+		docs/AlphabetRule1.txt \
+		docs/Axiom2.txt \
+		docs/Alphabet2.txt \
+		docs/AlphabetRule2.txt \
 		/usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/common/unix.conf \
 		/usr/lib64/qt5/mkspecs/common/linux.conf \

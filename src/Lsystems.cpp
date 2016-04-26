@@ -58,13 +58,13 @@ void LSystems::setAxiom()
 {
   if(m_treeOption==1)
   {
-    std::ifstream inputAxiom("Axiom1.txt");
+    std::ifstream inputAxiom("docs/Axiom1.txt");
     std::getline(inputAxiom,m_axiom);
   }
 
   else if(m_treeOption==2)
   {
-  std::ifstream inputAxiom("Axiom2.txt");
+  std::ifstream inputAxiom("docs/Axiom2.txt");
   std::getline(inputAxiom,m_axiom);
   }
   std::cout<<"axiom assigned is "<<m_axiom<<"\n";
@@ -77,13 +77,13 @@ void LSystems::setAlphabet()
 {
   if(m_treeOption==1)
   {
-    std::ifstream inputAlphabet("Alphabet1.txt");
+    std::ifstream inputAlphabet("docs/Alphabet1.txt");
     std::getline(inputAlphabet,m_alphabet);
   }
 
   else if(m_treeOption==2)
   {
-    std::ifstream inputAlphabet("Alphabet2.txt");
+    std::ifstream inputAlphabet("docs/Alphabet2.txt");
     std::getline(inputAlphabet,m_alphabet);
   }
   std::cout<<"alphabet assigned is "<<m_alphabet<<"\n";
@@ -97,13 +97,13 @@ void LSystems::setRule()
 {
   if (m_treeOption == 1)
   {
-  std::ifstream inputRule("Rule1.txt");
+  std::ifstream inputRule("docs/Rule1.txt");
   std::getline(inputRule,m_axiomRule);
   }
 
   else if (m_treeOption == 2)
   {
-  std::ifstream inputRule("Rule2.txt");
+  std::ifstream inputRule("docs/Rule2.txt");
   std::getline(inputRule,m_axiomRule);
   }
   std::cout<<"Rule assigned is "<<m_axiomRule<<"\n";
@@ -116,13 +116,13 @@ void LSystems::setAlphabetRule()
 {
   if (m_treeOption == 1)
   {
-    std::ifstream inputAlphabetRule("AlphabetRule1.txt");
+    std::ifstream inputAlphabetRule("docs/AlphabetRule1.txt");
     std::getline(inputAlphabetRule,m_alphabetRule);
   }
 
   else if (m_treeOption == 2)
   {
-    std::ifstream inputAlphabetRule("AlphabetRule2.txt");
+    std::ifstream inputAlphabetRule("docs/AlphabetRule2.txt");
     std::getline(inputAlphabetRule,m_alphabetRule);
   }
     std::cout<<"Alphabet assigned is "<<m_alphabetRule<<"\n";
