@@ -3,12 +3,17 @@
 
 #include <iostream>
 
-
-
+/// \author Kate Edge
+/// \version 1.0
+/// \date 26/4/2016
+/// \class LSystems
+/// \brief Stores contents of txt files
 
 class LSystems
 {
 public:
+    int m_iterations;
+    int m_maxIterations;
     //Constructor
     LSystems();
     //Destructor
@@ -20,15 +25,9 @@ public:
     void setAlphabet();
     void setRule();
     void setAlphabetRule();
-    void selectTree(int option);
+    void selectTree(const int _option);
     const std::string& getDrawingRule() const {return m_str;}
     void createLeaf();
-    int m_iterations;
-    int m_maxIterations;
-
-
-
-
 
 
 private:
@@ -39,15 +38,7 @@ private:
     std::string m_axiomRule;
     std::string m_alphabetRule;
     int m_treeOption;
-
     std::string m_angle;
-
-
-
-
-
-
-
 };
 
 #endif // LSYSTEMS_H

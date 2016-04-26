@@ -14,10 +14,13 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <GL/glu.h>
+#include "GL/glu.h"
 #include "Scene.h"
 #include "Lsystems.h"
 #include "Turtle.h"
+
+#define WINDOWWIDTH 800
+#define WINDOWHEIGHT 600
 
 // Includes needed for SDL an GL
 #include <SDL2/SDL.h>
@@ -57,8 +60,8 @@ int main()
   window = SDL_CreateWindow( "L-Systems",
                                 200,
                                 100,
-                                500,
-                                400,
+                                WINDOWWIDTH,
+                                WINDOWHEIGHT,
                                 SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 
   if( window == NULL )
@@ -71,6 +74,7 @@ int main()
   scene = new Scene();
 
   scene->init();
+
 
   bool quit = false;
 
@@ -90,27 +94,58 @@ int main()
       {
         switch (event.key.keysym.sym)
         {
-          case SDLK_ESCAPE : quit=true; break;
+          case SDLK_ESCAPE:
+          {
+            quit=true; break;
+          }
+
           // if 1 is pressed draw 1st tree type
-          case SDLK_1 : lsystems.selectTree(1);lsystems.m_iterations=0; break;
+          case SDLK_1:
+          {
+            lsystems.selectTree(1);lsystems.m_iterations=0; break;
+          }
+
           // if 2 is pressed draw 2ns tree type
-          case SDLK_2 : lsystems.selectTree(2); lsystems.m_iterations=0 ; break;
+          case SDLK_2:
+          {
+            lsystems.selectTree(2); lsystems.m_iterations=0 ; break;
+          }
+
           // press up to increase angle
-          case SDLK_UP : turtle.m_angle+=5; break;
+          case SDLK_UP:
+          {
+            turtle.m_angle+=5; break;
+          }
+
           // press down to decrease angle
-          case SDLK_DOWN : turtle.m_angle -=5; break;
+          case SDLK_DOWN:
+          {
+            turtle.m_angle -=5; break;
+          }
+
           // if right pressed increase max increments (max growth)
-          case SDLK_RIGHT : lsystems.m_maxIterations+=1; lsystems.m_iterations=0; break;
+          case SDLK_RIGHT:
+          {
+            lsystems.m_maxIterations+=1; lsystems.m_iterations=0; break;
+          }
+
           // if left pressed decrease max increments (min graowth)
-          case SDLK_LEFT : lsystems.m_maxIterations-=1; lsystems.m_iterations=0; break;
-          default: break;
+          case SDLK_LEFT:
+          {
+            lsystems.m_maxIterations-=1; lsystems.m_iterations=0; break;
+          }
+
+          default:
+          {
+            break;
+          }
         }
       }
     }
 
     scene->drawScene();
 
-    lsystems.createLeaf();
+    //lsystems.createLeaf();
     lsystems.setAxiom();
     lsystems.setRule();
     lsystems.setAlphabet();
@@ -123,7 +158,7 @@ int main()
     lsystems.getDrawingRule();
 
     // width and height. width increases with each iteration
-    turtle.Draw(lsystems,lsystems.m_iterations*0.008,0.25);
+    turtle.Draw(lsystems,lsystems.m_iterations*0.008,0.20);
 
     SDL_GL_SwapWindow( window);
   }

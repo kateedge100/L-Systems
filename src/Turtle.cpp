@@ -1,9 +1,13 @@
+///
+///  @file Turtle.cpp
+///  @brief takes the rule produced in Lsystems.cpp and uses it to create a tree
+
 #include "Turtle.h"
 #include "Lsystems.h"
 #include <iostream>
 #include <fstream>
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include "GL/gl.h"
+#include "GL/glu.h"
 
 Turtle::Turtle()
 {
@@ -12,29 +16,23 @@ Turtle::Turtle()
 
 void Turtle::createBranch()
 {
-    glMatrixMode(GL_MODELVIEW);
+  glMatrixMode(GL_MODELVIEW);
+  glTranslatef(0.0f,m_length,0.0f);
 
-
-
-    glTranslatef(0.0f,m_length,0.0f);
-
-    glPushMatrix();
-
-    GLUquadricObj*qobj = gluNewQuadric();
-    glRotatef(90,1.0f,0.0f,0.0f);
-
-    gluCylinder(qobj,
-                  m_width,
-                  m_width,
-                  m_length,
-                  50,
-                  50);
-
-    gluDeleteQuadric(qobj);
-    glPopMatrix();
+  glPushMatrix();
+  GLUquadricObj*qobj = gluNewQuadric();
+  glRotatef(90,1.0f,0.0f,0.0f);
+  gluCylinder(qobj,
+              m_width,
+              m_width,
+              m_length,
+              50,
+              50);
+  gluDeleteQuadric(qobj);
+  glPopMatrix();
 }
 
-void Turtle::setAngle(float _angle)
+void Turtle::setAngle(const float _angle)
 {
   m_angle=_angle;
 
@@ -63,12 +61,12 @@ void Turtle::rollRight()
 
 void Turtle::pitchUp()
 {
-  glRotatef(-m_angle,1.0f,0.0f,0.0f);
+  glRotatef(m_angle,1.0f,0.0f,0.0f);
 }
 
 void Turtle::pitchDown()
 {
-  glRotatef(m_angle,1.0f,0.0f,0.0f);
+  glRotatef(-m_angle,1.0f,0.0f,0.0f);
 }
 
 void Turtle::push()
@@ -77,7 +75,7 @@ void Turtle::push()
   // so width cant be less then 0.008
   if(m_width>= 0.008)
  {
-   m_width-=0.005;
+   m_width-=0.008;
  }
 
 }
@@ -87,13 +85,13 @@ void Turtle::pop()
   glPopMatrix();
 
   // so width cant be less then 0
-  if(m_width<0.04)
+  if(m_width<0.03)
   {
-    m_width+=0.005;
+    m_width+=0.008;
   }
 }
 
-void Turtle::Draw(const LSystems &l, float _w, float _length)
+void Turtle::Draw(const LSystems &l, const float _w, const float _length)
 {
   m_width=_w;
   m_length=_length;

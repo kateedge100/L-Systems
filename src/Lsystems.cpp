@@ -1,3 +1,7 @@
+///
+///  @file Lsystems.cpp
+///  @brief reads in txt files and produces the rule needed to draw the tree
+
 #include "Lsystems.h"
 #include "Turtle.h"
 #include <iostream>
@@ -5,8 +9,8 @@
 #include <SDL/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include "GL/gl.h"
+#include "GL/glu.h"
 
 LSystems::LSystems()
 {
@@ -14,6 +18,8 @@ LSystems::LSystems()
   m_iterations=1;
   m_maxIterations=3;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
 
 void LSystems::createLeaf()
 {
@@ -32,15 +38,21 @@ void LSystems::createLeaf()
   glPopMatrix();
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
 LSystems::~LSystems()
 {
   m_str.clear();
 }
 
-void LSystems::selectTree(int option)
+//----------------------------------------------------------------------------------------------------------------------
+
+void LSystems::selectTree(const int _option)
 {
-  m_treeOption=option;
+  m_treeOption=_option;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
 
 void LSystems::setAxiom()
 {
@@ -59,6 +71,8 @@ void LSystems::setAxiom()
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
 void LSystems::setAlphabet()
 {
   if(m_treeOption==1)
@@ -76,6 +90,9 @@ void LSystems::setAlphabet()
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
+// Rules from http://www.geekyblogger.com/2008/04/tree-and-l-system.html
 void LSystems::setRule()
 {
   if (m_treeOption == 1)
@@ -93,6 +110,8 @@ void LSystems::setRule()
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
 void LSystems::setAlphabetRule()
 {
   if (m_treeOption == 1)
@@ -109,12 +128,14 @@ void LSystems::setAlphabetRule()
     std::cout<<"Alphabet assigned is "<<m_alphabetRule<<"\n";
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
 void LSystems::productions(int m_iterations)
 {
   int axRuleLength= m_axiomRule.length();
   int alRuleLength = m_alphabetRule.length();
 
-  //creates string to store rule
+  //creates string to store rule, initially contains F
   m_str = "F";
   // creates string to access each character in str
   std::string m_ch = "";
@@ -161,3 +182,5 @@ void LSystems::productions(int m_iterations)
     std::cout << m_str << "\n";
   }
 }
+
+//----------------------------------------------------------------------------------------------------------------------

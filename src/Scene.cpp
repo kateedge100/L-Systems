@@ -1,5 +1,10 @@
+///
+///  @file Scene.cpp
+///  @brief Initilises the scene ready for drawing
+
+
 #include "Scene.h"
-#include <sys/time.h>
+
 
 Scene::Scene()
 {
