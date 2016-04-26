@@ -10,11 +10,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
-#include <sys/time.h>
-#include <time.h>
 #include <unistd.h>
-
 #include "GL/glu.h"
+#include <SDL2/SDL.h>
+
 #include "Scene.h"
 #include "Lsystems.h"
 #include "Turtle.h"
@@ -22,14 +21,16 @@
 #define WINDOWWIDTH 800
 #define WINDOWHEIGHT 600
 
-// Includes needed for SDL an GL
-#include <SDL2/SDL.h>
+
 
 // THINGS TO DO
 // correct lighting
 // DOXYGEN
 // add leaves
 // add textures (possibly for seasons)
+
+
+//----------------------------------------------------------------------------------------------------------------------
 
 
 Uint32 UpdateIteration(Uint32 _interval, void * _param)
@@ -42,6 +43,9 @@ Uint32 UpdateIteration(Uint32 _interval, void * _param)
   }
     return _interval;
 }
+
+
+//----------------------------------------------------------------------------------------------------------------------
 
 int main()
 {
@@ -177,4 +181,8 @@ int main()
 
   return EXIT_SUCCESS;
 }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
